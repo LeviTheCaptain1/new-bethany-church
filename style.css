@@ -1,68 +1,79 @@
-.contact{
+.contact-section{
     background:#f8f9fa;
-    text-align:center;
+    padding:80px 8%;
 }
 
-.contact-text{
-    max-width:700px;
-    margin:0 auto 30px;
+.contact-container{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+.contact-info{
+    text-align:left;
+}
+
+.contact-info h2{
+    color:#0b5ed7;
+    margin-bottom:15px;
+    font-size:2.2rem;
+}
+
+.contact-intro{
+    margin-bottom:30px;
     color:#666;
 }
 
-.contact-card{
-    max-width:700px;
-    margin:auto;
-    background:white;
-    padding:35px;
-    border-radius:15px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.08);
-}
-
-.contact-item{
+.contact-detail{
     display:flex;
-    align-items:center;
-    gap:20px;
-    text-align:left;
+    gap:15px;
     margin-bottom:25px;
-    padding-bottom:20px;
-    border-bottom:1px solid #eee;
+    align-items:flex-start;
 }
 
-.contact-item:last-of-type{
-    border-bottom:none;
+.contact-detail span{
+    font-size:28px;
 }
 
-.icon{
-    font-size:30px;
-    min-width:40px;
+.contact-form{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-.contact-item h3{
-    color:#0b5ed7;
-    margin-bottom:5px;
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:14px;
+    margin-bottom:15px;
+    border:1px solid #ddd;
+    border-radius:8px;
 }
 
-.contact-item a{
-    color:#333;
-    text-decoration:none;
+.contact-form textarea{
+    min-height:120px;
 }
 
-.contact-item a:hover{
-    color:#0b5ed7;
-}
-
-.map-btn{
-    display:inline-block;
-    margin-top:20px;
-    padding:14px 30px;
+.contact-form button{
+    width:100%;
+    padding:14px;
+    border:none;
     background:#0b5ed7;
     color:white;
-    text-decoration:none;
     border-radius:8px;
+    cursor:pointer;
     font-weight:bold;
-    transition:0.3s;
 }
 
-.map-btn:hover{
+.contact-form button:hover{
     background:#084bb5;
+}
+
+@media(max-width:768px){
+    .contact-container{
+        grid-template-columns:1fr;
+    }
 }
