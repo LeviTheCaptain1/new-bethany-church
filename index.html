@@ -22,7 +22,7 @@ html {
 
 body{
     line-height: 1.75;
-    color: #1e293b; /* Premium slate color for better readability */
+    color: #1e293b;
     background-color: #ffffff;
     -webkit-font-smoothing: antialiased;
 }
@@ -346,7 +346,7 @@ section{
 }
 
 /* ==========================================
-   CLEAN MODULAR CONTACT MATRIX
+   INTERACTIVE CONTACT MATRIX & LINK STYLES
    ========================================== */
 .contact-section{
     background: #f8fafc;
@@ -375,7 +375,24 @@ section{
 .contact-details-grid {
     display: flex;
     flex-direction: column;
-    gap: 35px;
+    gap: 20px;
+}
+
+/* Modern Interactive Wrapper Links */
+.contact-detail-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 10px;
+    margin-left: -10px;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-detail-link:hover {
+    background-color: #ffffff;
+    transform: translateX(8px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03);
 }
 
 .contact-detail{
@@ -392,6 +409,12 @@ section{
     border-radius: 12px;
     line-height: 1;
     box-shadow: 0 4px 10px rgba(11, 94, 215, 0.03);
+    transition: all 0.3s ease;
+}
+
+.contact-detail-link:hover span {
+    background: #0b5ed7;
+    color: #ffffff;
 }
 
 .contact-detail strong {
@@ -634,32 +657,38 @@ footer{
                 </p>
 
                 <div class="contact-details-grid">
-                    <div class="contact-detail">
-                        <span>📧</span>
-                        <div>
-                            <strong>Email</strong>
-                            <p>info@newbethelintl.org</p>
+                    <a href="mailto:info@newbethelintl.org" class="contact-detail-link">
+                        <div class="contact-detail">
+                            <span>📧</span>
+                            <div>
+                                <strong>Email</strong>
+                                <p>info@newbethelintl.org</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="contact-detail">
-                        <span>📞</span>
-                        <div>
-                            <strong>Phone</strong>
-                            <p>(XXX)-XXX-XXX</p>
+                    <a href="tel:2085550199" class="contact-detail-link">
+                        <div class="contact-detail">
+                            <span>📞</span>
+                            <div>
+                                <strong>Phone</strong>
+                                <p>(208) 555-0199</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="contact-detail">
-                        <span>📍</span>
-                        <div>
-                            <strong>Location</strong>
-                            <p>
-                                50 West Spicewood Drive<br>
-                                Meridian, ID 83646
-                            </p>
+                    <a href="https://maps.google.com/?q=50+West+Spicewood+Drive+Meridian+ID+83646" target="_blank" rel="noopener noreferrer" class="contact-detail-link">
+                        <div class="contact-detail">
+                            <span>📍</span>
+                            <div>
+                                <strong>Location</strong>
+                                <p>
+                                    50 West Spicewood Drive<br>
+                                    Meridian, ID 83646
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
 
