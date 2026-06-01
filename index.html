@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Community Hope Center</title>
+<title>New Bethany Church</title>
 
 <style>
 *{
@@ -39,7 +39,7 @@ nav a{
 }
 
 .hero{
-    background:linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
+    background:linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
     url('https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1600&q=80');
     background-size:cover;
     background-position:center;
@@ -61,6 +61,7 @@ nav a{
     max-width:700px;
     margin:auto;
     margin-bottom:25px;
+    font-size:1.2rem;
 }
 
 .btn{
@@ -93,7 +94,7 @@ section{
     margin:auto;
 }
 
-.services{
+.services, .help-grid {
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:20px;
@@ -103,6 +104,12 @@ section{
     background:#f4f4f4;
     padding:25px;
     border-radius:10px;
+    text-align: center;
+}
+
+.card h3 {
+    color: #0b5ed7;
+    margin-bottom: 10px;
 }
 
 .donate{
@@ -111,7 +118,7 @@ section{
 }
 
 /* ==========================================
-   INTEGRATED NEW CONTACT STYLES
+   INTEGRATED CONTACT STYLES
    ========================================== */
 .contact-section{
     background:#f8f9fa;
@@ -234,92 +241,122 @@ footer{
 <body>
 
 <header>
-    <div class="logo">Community Hope</div>
+    <div class="logo">New Bethany Church</div>
 
     <nav>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#donate">Donate</a>
+        <a href="#about">About Us</a>
+        <a href="#services">Our Ministry</a>
+        <a href="#how-to-help">How to Help</a>
+        <a href="#donate">Tithe/Donate</a>
         <a href="#contact">Contact</a>
     </nav>
 </header>
 
 <section class="hero">
     <div class="hero-content">
-        <h1>A Community of Hope & Support</h1>
+        <h1>जय मसीह (Jai Masih) & Welcome</h1>
         <p>
-            Helping individuals and families overcome hunger,
-            homelessness, and poverty through compassionate services.
+            A warm, loving space for the Nepali Christian community to fellowship, 
+            worship, and grow together in faith and love.
         </p>
-
-        <a href="https://your-donation-link.com" class="btn">
-            Donate Now
-        </a>
+        <a href="#contact" class="btn">Join Our Service</a>
     </div>
 </section>
 
+<!-- ==========================================
+     ABOUT US SECTION
+     ========================================== -->
 <section id="about">
-    <h2 class="section-title">About Us</h2>
-
+    <h2 class="section-title">About Our Church</h2>
     <div class="about">
-        <p>
-            We provide support, dignity, and opportunities to people
-            experiencing hardship. Our mission is to build stronger
-            communities through food assistance, housing support,
-            wellness programs, and financial guidance.
+        <p style="font-size: 1.1rem; margin-bottom: 15px;">
+            We are a close-knit Nepali community church dedicated to sharing the gospel, preserved in our rich cultural heritage. Whether you are new to the area or searching for a spiritual home, we offer a safe haven of true Christian fellowship, mutual care, and hope.
+        </p>
+        <p style="font-size: 1.1rem; color: #666;">
+            Our mission is simple: to exalt God, nurture disciples across generations, and extend compassionate help to our families both locally and back home.
         </p>
     </div>
 </section>
 
-<section id="services">
-    <h2 class="section-title">How We Help</h2>
+<!-- ==========================================
+     OUR MINISTRY SECTION
+     ========================================== -->
+<section id="services" style="background: #fdfdfd;">
+    <h2 class="section-title">Our Gatherings</h2>
 
     <div class="services">
-
         <div class="card">
-            <h3>Food Assistance</h3>
-            <p>Providing meals and groceries to families in need.</p>
+            <h3>Weekly Worship</h3>
+            <p>Join us every week for heartfelt Nepali worship, praise, and sound biblical teachings.</p>
         </div>
 
         <div class="card">
-            <h3>Housing Support</h3>
-            <p>Helping individuals find stable housing solutions.</p>
+            <h3>Sangat & Fellowship</h3>
+            <p>Building strong families through home-to-home prayer circles and communal meals.</p>
         </div>
 
         <div class="card">
-            <h3>Wellness Programs</h3>
-            <p>Offering resources that support physical and mental health.</p>
+            <h3>Youth & Children</h3>
+            <p>Guiding our next generation to know God while honoring their roots and community.</p>
         </div>
 
         <div class="card">
-            <h3>Financial Guidance</h3>
-            <p>Helping people achieve long-term self-sufficiency.</p>
+            <h3>Prayer Request</h3>
+            <p>We believe in the power of prayer. Our elders are always ready to stand in prayer with you.</p>
         </div>
-
     </div>
 </section>
 
+<!-- ==========================================
+     HOW YOU CAN HELP SECTION
+     ========================================== -->
+<section id="how-to-help">
+    <h2 class="section-title">How You Can Help</h2>
+    
+    <div class="help-grid">
+        <div class="card">
+            <span style="font-size: 2.5rem;">🤝</span>
+            <h3 style="margin-top:10px;">Volunteer</h3>
+            <p>Help us coordinate weekly fellowship layouts, assist with church translation, support food setups, or lead community transport.</p>
+        </div>
+
+        <div class="card">
+            <span style="font-size: 2.5rem;">🙏</span>
+            <h3 style="margin-top:10px;">Keep Us in Prayer</h3>
+            <p>The greatest assistance you can offer is spiritual. Please pray for our leadership team, families, and community outreach.</p>
+        </div>
+
+        <div class="card">
+            <span style="font-size: 2.5rem;">❤️</span>
+            <h3 style="margin-top:10px;">Extend Hospitality</h3>
+            <p>We regularly welcome new newcomers from Nepal. Opening your home or offering guidance helps them adjust quickly.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================
+     DONATION SECTION
+     ========================================== -->
 <section id="donate" class="donate">
-    <h2 class="section-title">Support Our Mission</h2>
-
-    <p style="margin-bottom:25px;">
-        Every donation helps provide food, shelter, and hope.
+    <h2 class="section-title">Support Our Ministry</h2>
+    <p style="margin-bottom:25px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        Your tithes and generous offerings directly support our local ministry space, communal fellowships, and outreach initiatives.
     </p>
-
     <a href="https://your-donation-link.com" class="btn">
-        Donate Today
+        Give Cheerfully
     </a>
 </section>
 
+<!-- ==========================================
+     TWO-COLUMN CONTACT SECTION 
+     ========================================== -->
 <section id="contact" class="contact-section">
     <div class="contact-container">
 
         <div class="contact-info">
             <h2>Get In Touch</h2>
-
             <p class="contact-intro">
-                We'd love to hear from you. Whether you have questions,
-                need prayer, or want to get involved, we're here to help.
+                We'd love to hear from you. Whether you have questions, need prayer, or want to join us this coming Sunday, we're here to lift you up.
             </p>
 
             <div class="contact-detail">
@@ -356,16 +393,14 @@ footer{
                     </p>
                 </div>
             </div>
-
         </div>
 
         <div class="contact-form">
-            <h3>Send a Message</h3>
-
+            <h3>Send a Message / Prayer Request</h3>
             <form>
                 <input type="text" placeholder="Your Name" required>
                 <input type="email" placeholder="Email Address" required>
-                <textarea placeholder="Your Message"></textarea>
+                <textarea placeholder="How can we pray for you or help you?"></textarea>
                 <button type="submit">Send Message</button>
             </form>
         </div>
@@ -374,7 +409,7 @@ footer{
 </section>
 
 <footer>
-    <p>© 2026 Community Hope. All Rights Reserved.</p>
+    <p>© 2026 New Bethany Church. All Rights Reserved.</p>
 </footer>
 
 </body>
