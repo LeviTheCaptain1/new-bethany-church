@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>New Bethel International Church</title>
+<meta name="description" content="New Bethel International Church is a Nepali Christian church dedicated to worship, fellowship, prayer, and community outreach.">
 
 <style>
 /* ==========================================
@@ -116,7 +117,7 @@ nav a:hover::after {
     url('https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1600&q=80');
     background-size: cover;
     background-position: center;
-    height: 90vh;
+    min-height: 80vh;
     color: white;
     display: flex;
     justify-content: center;
@@ -206,7 +207,7 @@ nav a:hover::after {
    ========================================== */
 section{
     padding: 110px 8%;
-    scroll-margin-top: 100px; /* Resolves sticky layout header overlap issue */
+    scroll-margin-top: 100px;
 }
 
 .section-title{
@@ -576,6 +577,10 @@ footer{
 }
 
 @media(max-width:768px){
+    .hero {
+        min-height: 70vh; /* Reduces empty viewport height on small screens */
+    }
+
     .hero-content h1{
         font-size: 2.8rem;
     }
@@ -591,7 +596,6 @@ footer{
         padding: 20px 5%;
     }
 
-    /* Adapts branding identity cleanly for compact device space layout balanced look */
     .logo-full {
         display: none;
     }
@@ -600,7 +604,6 @@ footer{
         display: inline;
     }
     
-    /* Layout preservation wrapping mechanism */
     nav{
         display: flex;
         flex-wrap: wrap;
@@ -666,7 +669,7 @@ footer{
         
         <div class="sermon-showcase">
             <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Latest Sermon Video Player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Latest Sermon Video Player" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
 
@@ -869,7 +872,6 @@ footer{
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    // Donation Message Control Engine
     const donateBtn = document.getElementById('donate-btn');
     const donateMessage = document.getElementById('donate-message');
 
@@ -880,7 +882,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 7000);
     });
 
-    // Form Processing Engine
     const form = document.getElementById('contact-form');
     const message = document.getElementById('message');
     const counter = document.getElementById('char-count');
