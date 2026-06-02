@@ -1,18 +1,722 @@
-<div class="contact-form-container">
-    <form onsubmit="event.preventDefault(); alert('Thank you for reaching out! We will get back to you shortly.'); this.reset();">
-        <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" required placeholder="Your name">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Bethel International Church</title>
+
+<style>
+/* ==========================================
+   GLOBAL DESIGN VARIABLES & RESETS
+   ========================================== */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body{
+    line-height: 1.75;
+    color: #1e293b;
+    background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================
+   HEADER & GLASS NAVIGATION
+   ========================================== */
+header{
+    background: rgba(11, 94, 215, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: white;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+}
+
+.logo{
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #ffffff, #e2e8f0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+nav a{
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    margin-left: 28px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background-color: #ff6b35;
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* ==========================================
+   IMMERSIVE HERO SECTION
+   ========================================== */
+.hero{
+    background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)),
+    url('https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+}
+
+.hero-content h1{
+    font-size: 4rem;
+    margin-bottom: 24px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.15;
+}
+
+.hero-content p{
+    max-width: 680px;
+    margin: auto;
+    margin-bottom: 35px;
+    font-size: 1.35rem;
+    color: #f8fafc;
+    font-weight: 400;
+}
+
+.service-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 8px 20px;
+    border-radius: 100px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+}
+
+.service-pill::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: #ff6b35;
+    border-radius: 50%;
+}
+
+/* ==========================================
+   PREMIUM BUTTONS
+   ========================================== */
+.btn{
+    display: inline-block;
+    padding: 16px 36px;
+    background: #ff6b35;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    font-size: 0.95rem;
+    box-shadow: 0 4px 14px rgba(255, 107, 53, 0.3);
+}
+
+.btn:hover{
+    background: #e85b2a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* ==========================================
+   CORE STRUCTURAL LAYOUTS
+   ========================================== */
+section{
+    padding: 110px 8%;
+}
+
+.section-title{
+    text-align: center;
+    margin-bottom: 60px;
+    color: #0b5ed7;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 45px;
+    height: 4px;
+    background: #ff6b35;
+    margin: 16px auto 0 auto;
+    border-radius: 10px;
+}
+
+.about{
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+}
+
+.services, .help-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+/* ==========================================
+   MODERN MINIMALIST CARDS
+   ========================================== */
+.card{
+    background: #ffffff;
+    padding: 45px 30px;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+    border-color: #e2e8f0;
+}
+
+.card h3 {
+    color: #0f172a;
+    margin: 20px 0 12px 0;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.card p {
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   DYNAMIC SERMON INTERACTION BLOCK
+   ========================================== */
+.sermon-section {
+    background: #f8fafc;
+}
+
+.sermon-showcase {
+    max-width: 950px;
+    margin: 0 auto 60px auto;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    background: #0f172a;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.sermon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.archive-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    border: 1px solid #f1f5f9;
+    transition: all 0.3s ease;
+}
+
+.archive-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.05);
+}
+
+.archive-thumb {
+    width: 100%;
+    height: 170px;
+    background: #1e293b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2.8rem;
+}
+
+.archive-body {
+    padding: 24px;
+}
+
+.archive-body span {
+    font-size: 0.8rem;
+    color: #ff6b35;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.archive-body h4 {
+    margin: 8px 0 14px 0;
+    font-size: 1.15rem;
+    color: #0f172a;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.archive-link {
+    color: #0b5ed7;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s ease;
+}
+
+.archive-link:hover {
+    color: #0a4ab1;
+}
+
+/* ==========================================
+   DONATION & GIVING CAPABILITIES
+   ========================================== */
+.donate{
+    text-align: center;
+    background: #ffffff;
+}
+
+/* ==========================================
+   INTERACTIVE CONTACT MATRIX & LINK STYLES
+   ========================================== */
+.contact-section{
+    background: #f8fafc;
+    border-top: 1px solid #f1f5f9;
+}
+
+.contact-container{
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 70px;
+    align-items: start;
+}
+
+.contact-info{
+    text-align: left;
+}
+
+.contact-intro{
+    margin-bottom: 45px;
+    color: #475569;
+    font-size: 1.1rem;
+}
+
+.contact-details-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Modern Interactive Wrapper Links */
+.contact-detail-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 10px;
+    margin-left: -10px;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-detail-link:hover {
+    background-color: #ffffff;
+    transform: translateX(8px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03);
+}
+
+.contact-detail{
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.contact-detail span{
+    font-size: 20px;
+    background: #eff6ff;
+    color: #0b5ed7;
+    padding: 14px;
+    border-radius: 12px;
+    line-height: 1;
+    box-shadow: 0 4px 10px rgba(11, 94, 215, 0.03);
+    transition: all 0.3s ease;
+}
+
+.contact-detail-link:hover span {
+    background: #0b5ed7;
+    color: #ffffff;
+}
+
+.contact-detail strong {
+    font-size: 1.1rem;
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.contact-detail p {
+    color: #475569;
+    margin-top: 4px;
+}
+
+.contact-form-container {
+    background: #ffffff;
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.03), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
+    border: 1px solid #f1f5f9;
+}
+
+.form-group {
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #334155;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #0f172a;
+    background-color: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    outline: none;
+    background-color: #ffffff;
+    border-color: #0b5ed7;
+    box-shadow: 0 0 0 4px rgba(11, 94, 215, 0.12);
+}
+
+footer{
+    background: #0f172a;
+    color: #94a3b8;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN SYSTEM OVERRIDES
+   ========================================== */
+@media(max-width:992px){
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+}
+
+@media(max-width:768px){
+    .hero-content h1{
+        font-size: 2.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.15rem;
+    }
+
+    header{
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 20px 5%;
+    }
+    
+    nav a {
+        margin: 0 14px;
+    }
+    
+    section {
+        padding: 80px 6%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">New Bethel International Church</div>
+    <nav>
+        <a href="#about">About Us</a>
+        <a href="#sermons">Sermons</a>
+        <a href="#services">Our Ministry</a>
+        <a href="#how-to-help">How to Help</a>
+        <a href="#donate">Donate</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="service-pill">Join Us Sundays at 10:30 AM</div>
+            <h1>जय मसीह (Jai Masih) & Welcome</h1>
+            <p>
+                A warm, loving space for the Nepali Christian community to fellowship, 
+                worship, and grow together in faith and love.
+            </p>
+            <a href="#contact" class="btn">Join Our Service</a>
         </div>
-        <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" required placeholder="Your email address">
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Our Church</h2>
+        <div class="about">
+            <p style="font-size: 1.25rem; margin-bottom: 24px; color: #0f172a; font-weight: 600; line-height: 1.6;">
+                We are a close-knit Nepali community church dedicated to sharing the gospel, preserved in our rich cultural heritage. Whether you are new to the area or searching for a spiritual home, we offer a safe haven of true Christian fellowship, mutual care, and hope.
+            </p>
+            <p style="font-size: 1.1rem; color: #475569;">
+                Our mission is simple: to exalt God, nurture disciples across generations, and extend compassionate help to our families both locally and back home.
+            </p>
         </div>
-        <div class="form-group">
-            <label for="message">How can we pray for or assist you?</label>
-            <textarea id="message" rows="4" maxlength="500" required placeholder="Write your message here..."></textarea>
-            <span style="font-size: 0.75rem; color: #64748b; display: block; margin-top: 4px; text-align: right;">Maximum 500 characters</span>
+    </section>
+
+    <section id="sermons" class="sermon-section">
+        <h2 class="section-title">Latest Message & Media</h2>
+        
+        <div class="sermon-showcase">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Latest Sermon Video Player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div>
-        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
-    </form>
-</div>
+
+        <div class="sermon-grid">
+            <div class="archive-card">
+                <div class="archive-thumb">📖</div>
+                <div class="archive-body">
+                    <span>May 24, 2026</span>
+                    <h4>Walking in True Christian Fellowship</h4>
+                    <a href="https://www.youtube.com" target="_blank" class="archive-link">Watch on YouTube →</a>
+                </div>
+            </div>
+
+            <div class="archive-card">
+                <div class="archive-thumb">🙏</div>
+                <div class="archive-body">
+                    <span>May 17, 2026</span>
+                    <h4>The Power of Persistent Prayer</h4>
+                    <a href="https://www.youtube.com" target="_blank" class="archive-link">Watch on YouTube →</a>
+                </div>
+            </div>
+
+            <div class="archive-card">
+                <div class="archive-thumb">🌱</div>
+                <div class="archive-body">
+                    <span>May 10, 2026</span>
+                    <h4>Nurturing Generational Roots</h4>
+                    <a href="https://www.youtube.com" target="_blank" class="archive-link">Watch on YouTube →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2 class="section-title">Our Gatherings</h2>
+        <div class="services">
+            <div class="card">
+                <h3>Weekly Worship</h3>
+                <p>Join us every week for heartfelt Nepali worship, praise, and sound biblical teachings.</p>
+            </div>
+            <div class="card">
+                <h3>Sangat & Fellowship</h3>
+                <p>Building strong families through home-to-home prayer circles and communal meals.</p>
+            </div>
+            <div class="card">
+                <h3>Youth & Children</h3>
+                <p>Guiding our next generation to know God while honoring their roots and community.</p>
+            </div>
+            <div class="card">
+                <h3>Prayer Request</h3>
+                <p>We believe in the power of prayer. Our elders are always ready to stand in prayer with you.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-to-help" style="background: #fafafa;">
+        <h2 class="section-title">How You Can Help</h2>
+        <div class="help-grid">
+            <div class="card">
+                <span style="display:inline-block; font-size: 2.5rem; margin-bottom: 5px;">🤝</span>
+                <h3>Volunteer</h3>
+                <p>Help us coordinate weekly fellowship layouts, assist with church translation, support food setups, or lead community transport.</p>
+            </div>
+            <div class="card">
+                <span style="display:inline-block; font-size: 2.5rem; margin-bottom: 5px;">🙏</span>
+                <h3>Keep Us in Prayer</h3>
+                <p>The greatest assistance you can offer is spiritual. Please pray for our leadership team, families, and community outreach.</p>
+            </div>
+            <div class="card">
+                <span style="display:inline-block; font-size: 2.5rem; margin-bottom: 5px;">❤️</span>
+                <h3>Extend Hospitality</h3>
+                <p>We regularly welcome newcomers from Nepal. Opening your home or offering guidance helps them adjust quickly.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="donate" class="donate">
+        <h2 class="section-title">Support Our Ministry</h2>
+        <p style="margin-bottom:35px; max-width: 600px; margin-left: auto; margin-right: auto; font-size: 1.15rem; color: #475569;">
+            Your tithes and generous offerings directly support our local ministry space, communal fellowships, and outreach initiatives.
+        </p>
+        <button onclick="alert('Our online donation system is currently under maintenance. Please check back later or contact us directly to give. Thank you for your support!')" class="btn">
+            Donate Now
+        </button>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Get In Touch</h2>
+                <p class="contact-intro">
+                    Whether you have questions or want to join us this coming Sunday, we're here to welcome you.
+                </p>
+
+                <div class="contact-details-grid">
+                    <a href="mailto:info@XXXXXXXXXXXXX" class="contact-detail-link">
+                        <div class="contact-detail">
+                            <span>📧</span>
+                            <div>
+                                <strong>Email</strong>
+                                <p>info@XXXXXXXXXXXXX</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="tel:XXXXXXXXXX" class="contact-detail-link">
+                        <div class="contact-detail">
+                            <span>📞</span>
+                            <div>
+                                <strong>Phone</strong>
+                                <p>(XXX) XXX-XXXX</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://maps.google.com/?q=50+West+Spicewood+Drive,+Meridian,+ID+83646" target="_blank" rel="noopener noreferrer" class="contact-detail-link">
+                        <div class="contact-detail">
+                            <span>📍</span>
+                            <div>
+                                <strong>Location</strong>
+                                <p>
+                                    50 West Spicewood Drive<br>
+                                    Meridian, ID 83646
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-form-container">
+                <form onsubmit="event.preventDefault(); alert('Thank you for reaching out! We will get back to you shortly.'); this.reset();">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required placeholder="Your email address">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">How can we pray for or assist you?</label>
+                        <textarea id="message" rows="4" maxlength="500" required placeholder="Write your message here..."></textarea>
+                        <span style="font-size: 0.75rem; color: #64748b; display: block; margin-top: 6px; text-align: right; font-weight: 500;">Maximum 500 characters</span>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 New Bethel International Church. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
