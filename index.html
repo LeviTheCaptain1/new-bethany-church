@@ -28,6 +28,18 @@ body{
 }
 
 /* ==========================================
+   KEYBOARD FOCUS ACCESSIBILITY STATES
+   ========================================== */
+.btn:focus-visible,
+nav a:focus-visible,
+.contact-detail-link:focus-visible,
+.form-group input:focus-visible,
+.form-group textarea:focus-visible {
+    outline: 3px solid #ff6b35;
+    outline-offset: 3px;
+}
+
+/* ==========================================
    HEADER & GLASS NAVIGATION
    ========================================== */
 header{
@@ -52,6 +64,14 @@ header{
     background: linear-gradient(135deg, #ffffff, #e2e8f0);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.logo-full {
+    display: inline;
+}
+
+.logo-short {
+    display: none;
 }
 
 nav {
@@ -106,7 +126,7 @@ nav a:hover::after {
 }
 
 .hero-content {
-    max-width: 850px; /* Constrained wide desktop layouts */
+    max-width: 850px;
     width: 100%;
 }
 
@@ -186,6 +206,7 @@ nav a:hover::after {
    ========================================== */
 section{
     padding: 110px 8%;
+    scroll-margin-top: 100px; /* Resolves sticky layout header overlap issue */
 }
 
 .section-title{
@@ -481,7 +502,6 @@ section{
     box-sizing: border-box;
 }
 
-/* Polish interactive states */
 .form-group input:hover,
 .form-group textarea:hover {
     border-color: #94a3b8;
@@ -570,6 +590,15 @@ footer{
         text-align: center;
         padding: 20px 5%;
     }
+
+    /* Adapts branding identity cleanly for compact device space layout balanced look */
+    .logo-full {
+        display: none;
+    }
+
+    .logo-short {
+        display: inline;
+    }
     
     /* Layout preservation wrapping mechanism */
     nav{
@@ -593,7 +622,10 @@ footer{
 <body>
 
 <header>
-    <div class="logo">New Bethel International Church</div>
+    <div class="logo">
+        <span class="logo-full">New Bethel International Church</span>
+        <span class="logo-short">New Bethel</span>
+    </div>
     <nav>
         <a href="#about">About Us</a>
         <a href="#sermons">Sermons</a>
@@ -843,7 +875,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     donateBtn.addEventListener('click', function() {
         donateMessage.style.display = 'block';
-        // Auto-hides notification message context cleanly after 7 seconds
         setTimeout(() => {
             donateMessage.style.display = 'none';
         }, 7000);
@@ -861,20 +892,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
-
-        /* =========================================================
-           LAUNCH NOTE: HOOKING UP YOUR DATA ROUTE
-           =========================================================
-           Right now, this form acts as a simulation. To ensure emails 
-           actually arrive in your inbox when launching on GitHub pages, 
-           use a service like Formspree (easiest no-code option).
-           
-           1. Create a free account at formspree.io
-           2. Get your unique form endpoint URL (e.g., https://formspree.io/f/xoqp... )
-           3. Add method="POST" and action="YOUR_ENDPOINT_URL" into the 
-              HTML <form> element above, and delete this JavaScript event handler.
-           =========================================================
-        */
 
         successMessage.style.display = 'block';
         form.reset();
